@@ -1,0 +1,48 @@
+<div class="mt-5 m-auto w-50">
+  <h3 class="mb-3">Sign In</h3>
+  <form (ngSubmit)="signInFn()" class="border p-4 needs-validation">
+    <div class="mb-3">
+      <label class="form">Email</label>
+      <input
+        [(ngModel)]="formData.email"
+        type="email"
+        name="email"
+        class="form-control"
+        pattern="^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"
+        required
+        #emailInput="ngModel"
+        [ngClass]="{
+          'is-invalid':
+            (emailInput.dirty || emailInput.touched) && emailInput.invalid
+        }"
+      />
+      <div class="invalid-feedback">
+        @if(emailInput.errors?.['required']){
+          Please Enter Email
+        }@else{ Please Enter Valid Email }
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Password</label>
+      <input
+        [(ngModel)]="formData.password"
+        type="password"
+        name="password"
+        class="form-control"
+        minlength="8"
+        required
+        #passwordInput="ngModel"
+        [ngClass]="{
+          'is-invalid':
+            (passwordInput.dirty || passwordInput.touched) && passwordInput.invalid
+        }"
+      />
+      <div class="invalid-feedback">
+        @if(passwordInput.errors?.['required']){ Please Enter Password
+        }@else{Password must be at least 8 char }
+      </div>
+    </div>
+    <button [disabled]="passwordInput.invalid || emailInput.invalid" type="submit" class="btn btn-primary w-100">Sign In</button>
+  </form>
+</div>

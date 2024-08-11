@@ -1,0 +1,24 @@
+
+<div>
+  <div class="body2">
+    <div class="image">
+      <img class="img w-50"
+        [src]="productSelected.image"
+        alt=""
+      />
+    </div>
+    <div class="text">
+      <h4 class="name">{{productSelected.title}}</h4>
+
+      <h6 class="intel">Description : {{productSelected.description}}</h6>
+      <h6 class="os"></h6>
+
+      <p>Category : {{productSelected.category}}</p>
+      <p>
+        <span class="memory">Rate : {{productSelected.rating.rate}}</span>
+      </p>
+      <p class="price">Price : ${{productSelected.price}}</p>
+      <button (click)="addProduct(productSelected)" class="btn"> Add to cart</button>
+    </div>
+  </div>
+</div>

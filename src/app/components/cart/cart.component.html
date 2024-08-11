@@ -1,0 +1,25 @@
+
+<div class="mt-5">
+  <h2>Cart</h2>
+  <div class="d-flex justify-content-between mt-4">
+    <p class="col-3">Items</p>
+    <p class="col-3">Quantity</p>
+    <p class="col-3">Price</p>
+    <p class="col-3">Total Price : {{getTotalPrice()}}</p>
+  </div>
+  <hr class="mt-0">
+
+  @for(product of productsCart ; track product.id){
+    <div class="d-flex align-items-center">
+      <div class="col-3">
+        <img [src]="product.image" alt="">
+        <p class="w-50">{{product.title}}</p>
+      </div>
+      <p class="col-3"></p>
+      <p class="col-3">${{product.price}}</p>
+      <button class="btn btn-primary" (click)="deleteProduct(product.id)">Delete</button>
+    </div>
+    <hr>
+  }
+
+</div>

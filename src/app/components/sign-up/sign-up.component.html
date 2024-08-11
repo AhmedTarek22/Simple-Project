@@ -1,0 +1,90 @@
+<div class="mt-5 m-auto w-50">
+  <h3 class="mb-3">Sign Up</h3>
+  <form (ngSubmit)="signUpFn()" class="border p-4">
+    <div class="mb-3">
+      <label class="form">Name</label>
+      <input
+        [(ngModel)]="formData.name"
+        type="text"
+        name="name"
+        class="form-control"
+        minlength="3"
+        required
+        #nameInput="ngModel"
+        [ngClass]="{
+          'is-invalid':
+            (nameInput.dirty || nameInput.touched) && nameInput.invalid
+        }"
+      />
+      <div class="invalid-feedback">
+        @if(nameInput.errors?.['required']){ Please Enter Name }@else{ Name must
+        be at least 3 char }
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form">Email</label>
+      <input
+        [(ngModel)]="formData.email"
+        type="email"
+        name="email"
+        class="form-control"
+        pattern="^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"
+        required
+        #emailInput="ngModel"
+        [ngClass]="{
+          'is-invalid':
+            (emailInput.dirty || emailInput.touched) && emailInput.invalid
+        }"
+      />
+      <div class="invalid-feedback">
+        @if(emailInput.errors?.['required']){ Please Enter Email } @else{ Please
+        Enter Valid Email }
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form">Password</label>
+      <input
+        [(ngModel)]="formData.password"
+        type="password"
+        name="password"
+        class="form-control"
+        minlength="8"
+        required
+        #passwordInput="ngModel"
+        [ngClass]="{
+          'is-invalid':
+            (passwordInput.dirty || passwordInput.touched) && passwordInput.invalid
+        }"
+      />
+      <div class="invalid-feedback">
+        @if(passwordInput.errors?.['required']){ Please Enter Password
+        }@else{Password must be at least 8 char }
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form">Confirm Password</label>
+      <input
+        [(ngModel)]="formData.confirmPassword"
+        type="password"
+        name="confirmPassword"
+        class="form-control"
+        minlength="8"
+        required
+        #confirmPasswordInput="ngModel"
+        [ngClass]="{
+          'is-invalid':
+            (confirmPasswordInput.dirty || confirmPasswordInput.touched) &&
+            confirmPasswordInput.invalid
+        }"
+      />
+      <div class="invalid-feedback">
+        @if(confirmPasswordInput.errors?.['required']){ Please Enter Password
+        }@else if (confirmPasswordInput.value !== passwordInput.value){Not Matched}
+      </div>
+    </div>
+    <button [disabled]="nameInput.invalid || emailInput.invalid || passwordInput.invalid || confirmPasswordInput.invalid" type="submit" class="btn btn-primary w-100">Sign Up</button>
+  </form>
+</div>

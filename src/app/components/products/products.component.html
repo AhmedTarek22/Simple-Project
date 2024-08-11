@@ -1,0 +1,18 @@
+
+<div class="mt-5 row row-cols-lg-4 row-cols-md-3 row-cols-sm-1 gap-3">
+  @for(product of products; track product.id){
+  <div
+    class="border border-2 border-primary p-4 product col d-flex flex-wrap align-items-center"
+  >
+    <img [src]="product.image" alt="" />
+    <div>
+      <h3 class="my-3">{{ product.title }}</h3>
+      <p>Price: ${{ product.price }}</p>
+      <p>{{ product.category }}</p>
+    </div>
+    <button type="button" class="btn btn-primary m-3" [routerLink]="['/details',product.id]">Details</button>
+    <button type="button" class="btn btn-primary" (click)="addtoCart(product)">Cart</button>
+    <button type="button" class="btn btn-primary m-3" [routerLink]="['/update',product.id]" (click)="updateProductFn(product)">Update</button>
+  </div>
+  }
+</div>

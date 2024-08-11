@@ -1,0 +1,55 @@
+<div class="mt-5 w-50 m-auto">
+  <h3 class="mb-3">Add Product</h3>
+  <form (ngSubmit)="productAddedFn()">
+    <div class="form-group mb-3">
+      <label>Image</label>
+      <input
+        type="text"
+        class="form-control"
+        name="image"
+        required
+        [(ngModel)]="formProduct.image"
+        #imageInput="ngModel"
+      />
+    </div>
+    <div class="form-group mb-3">
+      <label>Title</label>
+      <input
+        type="text"
+        class="form-control"
+        name="title"
+        required
+        [(ngModel)]="formProduct.title"
+        #titleInput="ngModel"
+      />
+    </div>
+    <div class="form-group mb-3">
+      <label>Price</label>
+      <input
+        type="number"
+        class="form-control"
+        name="price"
+        required
+        [(ngModel)]="formProduct.price"
+        #priceInput="ngModel"
+      />
+    </div>
+    <!-- <div class="form-group mb-3">
+      <label>Rate</label>
+      <input type="number" class="form-control" name="rate" [(ngModel)]="formProduct.rating.rate" />
+    </div> -->
+    <div class="form-group mb-3">
+      <label>Description</label>
+      <input
+        type="text"
+        class="form-control"
+        name="description"
+        required
+        [(ngModel)]="formProduct.description"
+        #descriptionInput="ngModel"
+      />
+    </div>
+    <button [disabled]="titleInput.invalid || imageInput.invalid || priceInput.invalid || descriptionInput.invalid" type="submit" class="btn btn-primary w-100 mt-4">Add</button>
+  </form>
+  <button (click)="test()">test</button>
+</div>
